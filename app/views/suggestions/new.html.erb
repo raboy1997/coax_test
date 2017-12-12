@@ -1,13 +1,31 @@
-<%= form_for @suggestion do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <br>
-    <%= f.label :description %>
-    <%= f.text_area  :description %>
-    <br>
-    <%= f.label :category %>
-    <%= f.select :category_id, Category.all.collect { |c| [c.title, c.id] } %>
-    <br>
-    <%= f.hidden_field :bicycle_id, value: @suggestion.id %>
-    <%= f.submit %>
-<% end %>
+
+<div class="box">
+  <%= form_for @suggestion do |b| %>
+
+      <div class="form-group">
+        <%= b.label :name, :class => 'control-label col-lg-2' %>
+        <div class="col-lg-10">
+          <%= b.text_field :name, :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= b.label :description, :class => 'control-label col-lg-2' %>
+        <div class="col-lg-10">
+          <%= b.text_field :description, :class => 'form-control' %>
+        </div>
+      </div>
+
+      <br>
+      <div class="form-group">
+        <div class="col-lg-10">
+          <%= b.select :category_id, Category.all.collect { |c| [c.title, c.id] } %>        </div>
+      </div>
+
+      <br>
+      <div class="col-lg-10">
+        <%= b.submit 'Create', class: 'btn'%>
+      </div>
+
+  <%end%>
+</div>
