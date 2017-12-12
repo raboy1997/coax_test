@@ -1,0 +1,12 @@
+<% @bicycles.each do |bicycle| %>
+    <div id="<%= bicycle.id%>">
+      <%= image_tag bicycle.bicycle_photo.url, style: "width: 295px;height: 300px;"%>
+      <h2><%= link_to bicycle.name, bicycle_path(id: bicycle.id) %></h2>
+      <p><%= truncate(bicycle.description, length: 300) %></p>
+      <hr>
+      <%= link_to 'Use', use_bicycle_path(bicycle), remote: true, method: :post, class: 'btn btn-danger' if current_user.present? %>
+    </div>
+
+
+<% end %>
+<%= paginate @bicycles %>

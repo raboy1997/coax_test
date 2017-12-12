@@ -1,0 +1,13 @@
+<%= form_for @suggestion do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <br>
+    <%= f.label :description %>
+    <%= f.text_area  :description %>
+    <br>
+    <%= f.label :category %>
+    <%= f.select :category_id, Category.all.collect { |c| [c.title, c.id] } %>
+    <br>
+    <%= f.hidden_field :bicycle_id, value: @suggestion.id %>
+    <%= f.submit %>
+<% end %>

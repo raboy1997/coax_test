@@ -1,0 +1,20 @@
+
+<%= image_tag @bicycle.bicycle_photo.url, style: 'width: 300px' if @bicycle.bicycle_photo.present? %>
+<h2><%= @bicycle.name %></h2>
+<p><%= @bicycle.description %></p>
+
+<%= link_to 'Create suggestion', new_suggestion_path(id: @bicycle.id) %>
+
+
+<div class="suggestions">
+  <h2>Suggestions:</h2>
+  <% @suggestions.each do |suggestion| %>
+      <h3><%= suggestion.name %></h3>
+      <p><%= suggestion.description %></p>
+      <br>
+      <% if @bicycle.user == current_user %>
+          <%= link_to 'Merge suggestion', suggestion_merge_path(suggestion_id: suggestion.id), method: :put %>
+          <%= link_to 'Delete suggestion', suggestion_path(suggestion_id: suggestion.id), method: :delete %>
+      <% end %>
+  <% end %>
+</div>

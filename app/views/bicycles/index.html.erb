@@ -1,0 +1,12 @@
+
+<%= form_tag root_path, method: :get , remote: true do %>
+    <%= text_field_tag :name %>
+    <%= select_tag :category_id,
+                   options_from_collection_for_select(Category.all, :id, :title),
+                   prompt: 'choose category' %>
+    <%= submit_tag 'Search' %>
+<% end %>
+
+<div id="search_result">
+  <%= render "bicycles" %>
+</div>

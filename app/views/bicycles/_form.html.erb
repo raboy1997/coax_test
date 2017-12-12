@@ -1,0 +1,36 @@
+<div class="box">
+  <%= form_for @bicycle,  multiple: true do |b|%>
+
+      <div class="form-group">
+        <%= b.label :name, :class => 'control-label col-lg-2' %>
+        <div class="col-lg-10">
+          <%= b.text_field :name, :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= b.label :description, :class => 'control-label col-lg-2' %>
+        <div class="col-lg-10">
+          <%= b.text_field :description, :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= b.label :bicycle_photo, :class => 'control-label col-lg-2' %>
+        <div class="col-lg-10">
+          <%= b.file_field :bicycle_photo, :class => 'form-control'%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-lg-10">
+          <%= b.collection_select :category_id, @category, :id, :title%>
+        </div>
+      </div>
+
+      <div class="col-lg-10">
+        <%= b.submit 'Create', class: 'btn'%>
+      </div>
+
+  <%end%>
+</div>

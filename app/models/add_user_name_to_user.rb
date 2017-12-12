@@ -1,2 +1,0 @@
-class AddUserNameToUser < ApplicationRecord
-end

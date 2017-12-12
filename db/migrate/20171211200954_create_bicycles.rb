@@ -7,6 +7,7 @@ class CreateBicycles < ActiveRecord::Migration[5.1]
       t.integer :category_id
       t.integer :user_id
 
+
       t.timestamps
     end
   end
