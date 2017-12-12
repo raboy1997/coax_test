@@ -1,6 +1,7 @@
 class SuggestionsController < ApplicationController
+
   before_action :authenticate_user!
-  before_action :find_suggestion, only: [:destroy, :merge]
+  before_action :find_suggestion, only: %i[destroy merge]
 
   def new
     @bicycle = Bicycle.find(params[:id])
@@ -35,11 +36,12 @@ class SuggestionsController < ApplicationController
 
   def suggestion_params
     params.require(:suggestion).permit(:name, :description,
-                                               :category_id,
-                                               :bicycle_id)
+                                       :category_id,
+                                       :bicycle_id)
   end
 
   def find_suggestion
     @suggestion = Suggestion.find(params[:suggestion_id])
   end
+
 end

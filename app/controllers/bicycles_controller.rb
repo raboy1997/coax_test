@@ -1,10 +1,11 @@
 class BicyclesController < ApplicationController
+
   def index
     @bicycles = Bicycle.search(params[:name]).page(params[:page]).per(5)
-                    .where.not(id: try(:current_user).try(:usages).try(:pluck, :bicycle_id))
+                       .where.not(id: try(:current_user).try(:usages).try(:pluck, :bicycle_id))
 
     if params[:category_id].present?
-      @bicycles =  @bicycles.where(category_id: params[:category_id])
+      @bicycles = @bicycles.where(category_id: params[:category_id])
     end
     respond_to do |format|
       format.html

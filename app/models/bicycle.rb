@@ -1,4 +1,5 @@
 class Bicycle < ApplicationRecord
+
   belongs_to :user
   belongs_to :category
   has_many :suggestion
@@ -6,8 +7,7 @@ class Bicycle < ApplicationRecord
 
   mount_uploader :bicycle_photo, BicyclePhotoUploader
   validates :bicycle_photo, presence: true
-  validates :name , uniqueness: true
-
+  validates :name, uniqueness: true
 
   def self.search(search)
     if search
@@ -16,4 +16,5 @@ class Bicycle < ApplicationRecord
       Bicycle.all
     end
   end
+
 end
